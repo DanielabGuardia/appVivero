@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('./partials/head.ejs') %>
+    <title>Home</title> 
+</head>
+<body class="home">
+    <%- include('./partials/header.ejs') %>
+
+        <!-- Categoria -->
+        <section class="categorys">
+            <div class="categoriaPlantas">
+                <img src="/img/galeriaMayo2022.jpg" alt="Plantas">
+                <div class="data">
+                    <a href="/product/category/1"><h2>Plantas</h2></a>
+                    <span>Interior, exterior, galeria </span>
+                </div>
+            </div>
+            <div class="categoriaHuerta">
+                <img src="/images/cat-semillas.png" alt="Huerta">
+                <div class="data1">
+                    <a href="/product/category/2"><h2>Huerta</h2></a>
+                    <span>Tu huerto en casa </span>
+                </div>
+            </div>
+            <div class="categoriaRemedios">
+                <img src="/images/cat-macetas.jpeg" alt="Remedios">
+                <div class="data2">
+                    <a href="/product/category/3"><h2>Remedios</h2></a>
+                    <span>Naturales y agroquimicos</span>
+                </div>
+                <section class="container-products">
+                    <h2>PRODUCTOS</h2>
+                    <div class="products">
+                        <%  products.forEach(product => {%>
+                            <div class="product-related">
+                                <div class="image-product">
+                                    <a href="/product/detail/<%= product.id %>"><img src="images/products/<%= product.images %>" alt=""></a>
+                                </div>
+                                <div class="description-product">
+                                    <a href="/product/detail/<%= product.id %> "><p><%= product.name %></p></a>
+                                    <p>$<%= toThousand(product.price) %></p>
+                                    <button class="btn">Comprar</button>
+                                </div>
+                            </div>
+                        <% });%>
+                </section>
+                
+                
+                <%- include('./partials/script.ejs') %>
+                
+        </body>
+        <%- include('./partials/footer.ejs') %>
+        </html>
